@@ -1,0 +1,63 @@
+@if (employee) {
+    <h1>{{title + employee.employeeName}}</h1>
+
+
+    <table class="table table-hover table-striped">
+        <tbody>
+            <tr>
+                <th>Employee Id</th>
+                <td><span>{{employee.employeeId}}</span></td>
+            </tr>
+            <tr>
+                <th>Employee Name</th>
+                <td><span>{{employee.employeeName|uppercase}}</span></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td><span>{{employee.address|lowercase}}</span></td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td><span>{{employee.city}}</span></td>
+            </tr>
+            <tr>
+                <th>Zip Code</th>
+                <td><span>{{employee.zipcode}}</span></td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td><span>{{employee.phone}}</span></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><span>{{employee.email}}</span></td>
+            </tr>
+            <tr>
+                <th>Skill Sets</th>
+                <td><span>{{employee.skillSets|titlecase}}</span></td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td><span>{{employee.country|uppercase}}</span></td>
+            </tr>
+            <tr>
+                <th>Joining Date</th>
+                <td><span>{{employee.joiningDate|date:'medium'}}</span></td>
+            </tr>
+            <tr>
+                <th>Avatar</th>
+                <!-- <td><span>{{employee.avatar}}</span></td>
+                 -->
+                <img [src]="employee.avatar" [alt]="employee.employeeName">
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <button class="btn btn-danger" (click)="onEventProcess()">Send Employee Name</button>
+
+} @else {
+    <h4>
+        We did not find the employee you are looking for!
+    </h4>
+}
+

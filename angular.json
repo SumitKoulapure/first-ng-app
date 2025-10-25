@@ -25,7 +25,11 @@
               }
             ],
             "styles": [
+              "bootswatch/dist/morph/bootstrap.min.css",
               "src/styles.css"
+            ],"scripts": [
+              "bootstrap/dist/js/bootstrap.bundle.min.js"
+
             ]
           },
           "configurations": {
@@ -82,11 +86,18 @@
               }
             ],
             "styles": [
+              "bootswatch/dist/morph/bootstrap.min.css",
               "src/styles.css"
+            ],"scripts": [
+              "bootstrap/dist/js/bootstrap.bundle.min.js"
+
             ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

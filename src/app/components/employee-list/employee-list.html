@@ -1,0 +1,65 @@
+@if( employees&& employees.length>0 ){
+<h1>{{title}}</h1>
+<hr>
+<h6>{{subTitle}}</h6>
+
+@if(employeeName){
+    <p>{{employeeName}}</p>
+}
+
+
+<div class="row g-3 align-items-center">
+  <div class="col-auto">
+    <label for="inputEmpoyee" class="col-form-label">Search Event</label>
+  </div>
+  <div class="col-auto">
+    <input type="search" id="inputEmpoyee" class="form-control" placeholder="Search By Employee Name" [(ngModel)]="searchName" (input)="searchEmployess()">
+  </div>
+</div>
+<hr>
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            @for (col of columns; track $index) {
+                <th>{{col}}</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (employee of filteredEmployess| paginate :{itemsPerPage:epageSize,currentPage:epageNumber}; track $index) {
+            <tr>
+                <td>{{employee.employeeName|titlecase}} </td>
+                <td>{{employee.city|uppercase}} </td>
+                <td>{{employee.email|lowercase}}</td>
+                <td>{{employee.phone}}</td>
+                
+                    <button class="btn btn-danger"
+                    (click)="onEventSelecction(employee.employeeId)">
+                        Show Details
+                    </button>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<div class="container text-center my-pagination">
+    <pagination-controls (pageChange)="epageNumber=$event">
+       
+    </pagination-controls>
+</div>
+
+@if(selectedEmployeeId){
+    <app-emploee-details [employeeId]="selectedEmployeeId" (sendEmployeeName)="handleEmployeeName($event)">
+
+    </app-emploee-details>
+}
+
+}
+@else {
+  <h4>
+    Sorry ! We did not find any employees ! please Try Again after sometime.
+  </h4>
+}
+
